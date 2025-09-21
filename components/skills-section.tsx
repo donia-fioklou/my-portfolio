@@ -7,28 +7,17 @@ import { useLanguage } from "@/lib/language-context"
 const skillCategories = [
   {
     titleKey: "skills.backend",
-    skills: ["Django", "Django REST Framework", "Flask", "Python", "PostgreSQL", "API Design"],
+    skills: ["Django", "Django REST Framework", "Flask", "Docker", "VPS Deployment",],
   },
   {
     titleKey: "skills.frontend",
-    skills: ["React", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Responsive Design"],
-  },
-  {
-    titleKey: "skills.data",
-    skills: ["Data Analysis", "ETL Pipelines", "Data Validation", "Statistical Analysis", "Looker Studio"],
-  },
-  {
-    titleKey: "skills.devops",
-    skills: ["Docker", "VPS Deployment", "Git", "Linux", "USSD Integration", "Telecom APIs"],
+    skills: ["React", "Next.js"],
   },
   {
     titleKey: "skills.databases",
-    skills: ["PostgreSQL", "MySQL", "Database Design", "Query Optimization", "Data Modeling"],
+    skills: ["PostgreSQL","Supabase", "MySQL", "Database Design"],
   },
-  {
-    titleKey: "skills.softSkills",
-    skills: ["Problem Solving", "Team Collaboration", "Project Management", "Technical Documentation"],
-  },
+  
 ]
 
 export function SkillsSection() {

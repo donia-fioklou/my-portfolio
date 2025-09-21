@@ -10,37 +10,37 @@ const projects = [
   {
     titleKey: "projects.project1.title",
     descriptionKey: "projects.project1.description",
-    image: "/agricultural-data-dashboard.jpg",
-    tags: ["Django", "React", "PostgreSQL", "VPS", "REST API"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/my-portfolio.jpg",
+    tags: ["Next.js"],
+    liveUrl: "https://my-portfolio-eta-sable-40.vercel.app/",
+    githubUrl: "https://github.com/donia-fioklou/my-portfolio",
     featured: true,
   },
   {
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
-    image: "/electoral-management-dashboard.jpg",
-    tags: ["Django", "Python", "Data Analysis", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/depot_boisson.jpg",
+    tags: ["Django REST Framework","React","PostgreSQL"],
+    liveUrl: "https://depot-boisson-front.onrender.com/",
+    githubUrl: "https://github.com/donia-fioklou/gestion-depot-boisson",
     featured: true,
   },
   {
     titleKey: "projects.project3.title",
     descriptionKey: "projects.project3.description",
-    image: "/mobile-data-collection-interface.jpg",
-    tags: ["Python", "USSD", "API", "Telecom Integration"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/traduction_doc.jpg",
+    tags: ["Next.js","Supabase"],
+    liveUrl: "https://traductionexperts.com/",
+    githubUrl: "https://github.com/donia-fioklou/traduction_doc",
     featured: false,
   },
   {
     titleKey: "projects.project4.title",
     descriptionKey: "projects.project4.description",
-    image: "/data-pipeline-visualization.png",
-    tags: ["Python", "Data Pipeline", "Quality Assurance", "ETL"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/cv_boost.jpg",
+    tags: ["Flask","Next.js","Gemini API"],
+    liveUrl: "https://front-roast-cv.vercel.app/",
+    githubUrl: "https://github.com/donia-fioklou/back-roast-cv",
     featured: false,
   },
 ]
@@ -71,11 +71,11 @@ export function ProjectsSection() {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">{t(project.titleKey)}</CardTitle>
-                  {project.featured && (
+                  {/* {project.featured && (
                     <Badge variant="secondary" className="ml-2">
                       {t("projects.featured")}
                     </Badge>
-                  )}
+                  )} */}
                 </div>
                 <CardDescription className="text-muted-foreground leading-relaxed">
                   {t(project.descriptionKey)}
@@ -91,11 +91,21 @@ export function ProjectsSection() {
                     ))}
                   </div>
                   <div className="flex gap-3">
-                    <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+                      onClick={() => window.open(project.liveUrl, '_blank')}
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       {t("projects.liveDemo")}
                     </Button>
-                    <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
                       <Github className="h-4 w-4 mr-2" />
                       {t("projects.code")}
                     </Button>

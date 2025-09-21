@@ -7,70 +7,63 @@ import { useLanguage } from "@/lib/language-context"
 
 const experiences = [
   {
-    title: "Développeur web",
-    company: "Give Smile Solution",
-    location: "Togo",
-    period: "Février 2024 – Juillet 2025",
-    typeKey: "experience.fullTime",
-    description:
-      "Mise en production d'application d'analyse de données agricoles sur VPS, intégrant un backend Django REST Framework et un frontend React. Création d'API REST avec Django REST Framework permettant d'obtenir des données pour l'analyse de données agricoles.",
-    achievements: [
-      "Déploiement d'application d'analyse de données agricoles sur VPS",
-      "Création d'API REST avec Django REST Framework",
-      "Intégration du frontend React avec les services backend",
-      "Implémentation de fonctionnalités d'analyse de données pour les insights agricoles",
-    ],
-  },
-  {
-    title: "Développeur web",
+    titleKey: "experience.exp1.title",
     company: "Centre Nationale de Traitement de donnée",
     location: "Togo",
-    period: "Septembre 2023 – Janvier 2024",
+    periodKey: "experience.exp1.period",
     typeKey: "experience.contract",
-    description:
-      "Développement d'une plateforme d'enregistrement des candidatures électorales, permettant la gestion des dossiers des candidats et l'automatisation des processus de validation. Analyse statistique des données électorales pour faciliter la prise de décision stratégique.",
-    achievements: [
-      "Développement de plateforme d'enregistrement des candidats électoraux",
-      "Automatisation des processus de validation des candidatures",
-      "Implémentation d'analyse statistique des données électorales",
-      "Création de rapports personnalisés et d'indicateurs de performance clés",
-      "Construction d'API USSD pour la collecte de données de recensement avec les partenaires télécom",
-    ],
+    descriptionKey: "experience.exp1.description",
+    achievementsKey: "experience.exp1.achievements",
   },
   {
-    title: "Stagiaire - Projet de fin d'étude",
+    titleKey: "experience.exp2.title",
     company: "Give Smile Solution",
     location: "Togo",
-    period: "Juin 2023 – Août 2024",
+    periodKey: "experience.exp2.period",
+    typeKey: "experience.fullTime",
+    descriptionKey: "experience.exp2.description",
+    achievementsKey: "experience.exp2.achievements",
+  },
+  {
+    titleKey: "experience.exp3.title",
+    company: "Give Smile Solution",
+    location: "Togo",
+    periodKey: "experience.exp3.period",
     typeKey: "experience.internship",
-    description:
-      "Développement d'une plateforme d'analyse de données collectées pour une certification agricole. Implémentation d'un pipeline permettant de collecter, transformer et retourner des données propres.",
-    achievements: [
-      "Construction de plateforme d'analyse de données de certification agricole",
-      "Implémentation de pipeline ETL pour le traitement de données",
-      "Développement de mécanismes d'assurance qualité des données",
-      "Création de détection automatisée des incohérences de données",
-    ],
+    descriptionKey: "experience.exp3.description",
+    achievementsKey: "experience.exp3.achievements",
   },
 ]
 
 const education = [
   {
-    degree: "Ingénieur des travaux informatiques, Génie logiciel",
+    degreeKey: "experience.edu1.degree",
     school: "IAI-TOGO",
-    period: "Nov. 2020 - Août 2023",
-    activities: "Google Developer Student Clubs",
+    periodKey: "experience.edu1.period",
+    activitiesKey: "experience.edu1.activities",
   },
   {
-    degree: "Ingénieur big data",
+    degreeKey: "experience.edu2.degree",
     school: "UCAO-UUT",
-    period: "Formation continue",
-    skills: "Looker Studio, Docker",
+    periodKey: "experience.edu2.period",
   },
 ]
 
 export function ExperienceSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  
+  // Helper function to get array from translations
+  const getArray = (key: string) => {
+    const keys = key.split(".")
+    let value: any = language === "fr" ? 
+      require("@/lib/translations").translations.fr : 
+      require("@/lib/translations").translations.en
+    
+    for (const k of keys) {
+      value = value?.[k]
+    }
+    return value || []
+  }
   
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -92,7 +85,7 @@ export function ExperienceSection() {
                   <CardHeader>
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
-                        <CardTitle className="text-xl">{exp.title}</CardTitle>
+                        <CardTitle className="text-xl">{t(exp.titleKey)}</CardTitle>
                         <CardDescription className="text-lg font-medium text-primary">{exp.company}</CardDescription>
                       </div>
                       <div className="flex flex-col sm:items-end gap-1">
@@ -100,7 +93,7 @@ export function ExperienceSection() {
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
-                            {exp.period}
+                            {t(exp.periodKey)}
                           </div>
                           <div className="flex items-center gap-1">
                             <MapPin className="h-4 w-4" />
@@ -111,14 +104,14 @@ export function ExperienceSection() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{exp.description}</p>
+                    {/* <p className="text-muted-foreground mb-4 leading-relaxed">{t(exp.descriptionKey)}</p> */}
                     <div className="space-y-2">
                       <h4 className="font-medium text-sm">{t("experience.keyAchievements")}:</h4>
                       <ul className="space-y-1">
-                        {exp.achievements.map((achievement, achIndex) => (
+                        {getArray(exp.achievementsKey).map((achievement: string, achIndex: number) => (
                           <li key={achIndex} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <span className="text-primary mt-1.5">•</span>
-                            {achievement}
+                            {/* <span className="text-primary mt-1.5">•</span> */}
+                            - {achievement}
                           </li>
                         ))}
                       </ul>
@@ -138,22 +131,17 @@ export function ExperienceSection() {
                   <CardHeader>
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
-                        <CardTitle className="text-lg">{edu.degree}</CardTitle>
+                        <CardTitle className="text-lg">{t(edu.degreeKey)}</CardTitle>
                         <CardDescription className="text-primary font-medium">{edu.school}</CardDescription>
                       </div>
-                      <div className="text-sm text-muted-foreground">{edu.period}</div>
+                      <div className="text-sm text-muted-foreground">{t(edu.periodKey)}</div>
                     </div>
                   </CardHeader>
-                  {(edu.activities || edu.skills) && (
+                  {(edu.activitiesKey) && (
                     <CardContent>
-                      {edu.activities && (
+                      {edu.activitiesKey && (
                         <p className="text-sm text-muted-foreground">
-                          <span className="font-medium">{t("experience.activities")}:</span> {edu.activities}
-                        </p>
-                      )}
-                      {edu.skills && (
-                        <p className="text-sm text-muted-foreground">
-                          <span className="font-medium">{t("experience.skills")}:</span> {edu.skills}
+                          <span className="font-medium">{t("experience.activities")}:</span> {t(edu.activitiesKey)}
                         </p>
                       )}
                     </CardContent>
