@@ -191,20 +191,20 @@ export const translations = {
       liveDemo: "Live Demo",
       code: "Code",
       project1: {
-        title: "Agricultural Data Analysis Platform",
-        description: "Full-stack application for analyzing agricultural data with Django REST Framework backend and React frontend, deployed on VPS.",
+        title: "My Portfolio",
+        description: "A modern and responsive personal website, designed to showcase my skills, projects, and journey in an elegant and professional manner.",
       },
       project2: {
-        title: "Electoral Candidate Registration System",
-        description: "Platform for managing electoral candidate applications with automated validation processes and statistical analysis.",
+        title: "Beverage Stock Management Platform",
+        description: "A comprehensive web application that enables real-time stock tracking, automates sales management, and optimizes beverage supply.",
       },
       project3: {
-        title: "USSD Data Collection API",
-        description: "API system for census data collection via USSD, integrated with telecom operators YAS and Moov.",
+        title: "Document Translation Platform",
+        description: "A file submission and processing system that facilitates document translation, with an intuitive interface and streamlined workflow for users.",
       },
       project4: {
-        title: "Agricultural Certification Platform",
-        description: "Data pipeline for collecting, transforming, and validating agricultural certification data with quality assurance.",
+        title: "CV Boost Platform",
+        description: "An AI-powered solution to analyze, improve, and optimize resumes, helping candidates maximize their impact with recruiters.",
       },
     },
     skills: {
